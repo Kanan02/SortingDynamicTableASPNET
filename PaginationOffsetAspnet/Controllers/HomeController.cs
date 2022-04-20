@@ -56,6 +56,10 @@ namespace PaginationOffsetAspnet.Controllers
         [HttpGet]
         public async Task<IActionResult> GetUsers(int num,int pagenum,string orderedVal)
         {
+            if (pagenum<=0)
+            {
+                pagenum = 1;
+            }
             using (IDbConnection db = _connection)
             {
                 string query = @$"SELECT * FROM Users Order by {orderedVal}
