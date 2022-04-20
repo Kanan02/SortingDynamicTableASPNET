@@ -1,0 +1,111 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model UserViewModel
+<div class="text-center">
+    
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    
+</div>
+
+@*
+@Html.DropDownListFor(m=>m.ValPerPage ,  new SelectList(new List<int>(){2,5,10,15}), "Select Manufacurer",null)
+@Html.ActionLink("Set", 
+    "GetUsers",  // <-- ActionMethod
+    "Home",   // <-- Controller Name
+    new { num = @Model.ValPerPage,pagenum=@Model.Page }, // <-- Route arguments.
+    null  // <-- htmlArguments .. which are none
+    
+    )*@
+
+
+ @Html.ActionLink("5", 
+    "GetUsers",  // <-- ActionMethod
+    "Home",   // <-- Controller Name
+    new {  num = 5,pagenum=@Model.Page,orderedVal=@Model.SortedValue }, // <-- Route arguments.
+    null  // <-- htmlArguments .. which are none
+    
+    )
+     @Html.ActionLink("10", 
+    "GetUsers",  // <-- ActionMethod
+    "Home",   // <-- Controller Name
+    new { num = 10,pagenum=@Model.Page,orderedVal=@Model.SortedValue  }, // <-- Route arguments.
+    null  // <-- htmlArguments .. which are none
+    
+    )
+     @Html.ActionLink("15", 
+    "GetUsers",  // <-- ActionMethod
+    "Home",   // <-- Controller Name
+    new { num = 15,pagenum=@Model.Page,orderedVal=@Model.SortedValue }, // <-- Route arguments.
+    null  // <-- htmlArguments .. which are none
+    
+    )
+    <table>
+  <tr>
+   <th>  @Html.ActionLink("FirstName", 
+    "GetUsers",  // <-- ActionMethod
+    "Home",   // <-- Controller Name
+    new { num = @Model.ValPerPage,pagenum=@Model.Page,orderedVal="FirstName" }, // <-- Route arguments.
+    null  // <-- htmlArguments .. which are none
+    )
+    </th>
+   <th>  @Html.ActionLink("LastName", 
+    "GetUsers",  // <-- ActionMethod
+    "Home",   // <-- Controller Name
+    new { num = @Model.ValPerPage,pagenum=@Model.Page,orderedVal="LastName" }, // <-- Route arguments.
+    null  // <-- htmlArguments .. which are none
+    )
+    </th>
+    <th>
+   @Html.ActionLink("Address", 
+    "GetUsers",  // <-- ActionMethod
+    "Home",   // <-- Controller Name
+    new { num = @Model.ValPerPage,pagenum=@Model.Page,orderedVal="Address" }, // <-- Route arguments.
+    null  // <-- htmlArguments .. which are none
+    )
+    </th>
+    <th>
+     @Html.ActionLink("City", 
+    "GetUsers",  // <-- ActionMethod
+    "Home",   // <-- Controller Name
+    new { num = @Model.ValPerPage,pagenum=@Model.Page,orderedVal="City" }, // <-- Route arguments.
+    null  // <-- htmlArguments .. which are none
+    )
+    </th>
+  </tr>
+   @if(@Model!=null)
+    @foreach(var user in @Model.Users)
+    {
+        <tr>
+            <td>@user.FirstName</td>
+            <td>@user.LastName</td>
+            <td>@user.Address</td>
+            <td>@user.City</td>  
+           </tr>
+    }
+</table>
+<ul>
+<li>
+    
+
+
+</li>
+
+</ul>
+<div>
+     @Html.ActionLink("Back", 
+    "GetUsers",  // <-- ActionMethod
+    "Home",   // <-- Controller Name
+    new { num = @Model.ValPerPage,pagenum=@Model.Page-1,orderedVal=@Model.SortedValue }, // <-- Route arguments.
+    null  // <-- htmlArguments .. which are none
+    )
+    @Model.Page
+    <br />
+    @Html.ActionLink("Next", 
+    "GetUsers",  // <-- ActionMethod
+    "Home",   // <-- Controller Name
+    new {  num = @Model.ValPerPage,pagenum=@Model.Page+1,orderedVal=@Model.SortedValue }, // <-- Route arguments.
+    null  // <-- htmlArguments .. which are none
+    )
+</div>
