@@ -9,17 +9,6 @@
     
 </div>
 
-@*
-@Html.DropDownListFor(m=>m.ValPerPage ,  new SelectList(new List<int>(){2,5,10,15}), "Select Manufacurer",null)
-@Html.ActionLink("Set", 
-    "GetUsers",  // <-- ActionMethod
-    "Home",   // <-- Controller Name
-    new { num = @Model.ValPerPage,pagenum=@Model.Page }, // <-- Route arguments.
-    null  // <-- htmlArguments .. which are none
-    
-    )*@
-
-
  @Html.ActionLink("5", 
     "GetUsers",  // <-- ActionMethod
     "Home",   // <-- Controller Name
